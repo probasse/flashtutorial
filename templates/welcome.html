@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title%} Welcome to {{message}} Flash card Page! {% endblock %}
+
+{% block content %}
+
+    <h1>Welcome to {{message}} Page!</h1>
+    <p>
+        This is the demo application for the course
+        <em>Getting Started with Flask</em>
+    </p>
+        <img src="/static/Harini.jpeg">
+   <p>
+       <button>
+                <a href = "{{ url_for('card_view',index=0)}}">Flash Cards</a>
+        </button>
+        <button>
+            <a href = "{{url_for('add_card')}}">Add new Card</a>
+        </button>
+       <ul>
+           {% for card in cards %}
+                <li>
+                    <a href = "{{ url_for('card_view',index=loop.index0)}}">
+                        {{card.question}}
+                    </a>
+                </li>
+           {% endfor %}
+        </ul>
+    </p>
+{% endblock %}
